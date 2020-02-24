@@ -1,7 +1,40 @@
 {% extends "layout.html" %}
 {% block title %}Production{% endblock %}
 {% block content %}
-  <h1>Index</h1>
-  <p class="important">
-    Welcome on my awesome homepage.
+  <h2 class='text-center'>Auto Gauge Hourly Production</h2>
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <td scope="col">Today</td>
+          <td scope="col">1</td>
+          <td scope="col">2</td>
+          <td scope="col">3</td>
+          <td scope="col">4</td>
+          <td scope="col">5</td>
+          <td scope="col">6</td>
+          <td scope="col">7</td>
+          <td scope="col">8</td>
+          <td scope="col">Total</td>
+        </tr>
+      </thead>
+      {% for shift in hourly %}
+        <tr>
+          <th scope="row">
+            {% if loop.index is eq(1) %}
+              Midnights
+            {% elif loop.index is eq(2) %}
+              Days
+            {% elif loop.index is eq(3) %}
+              Afternoons
+            {% endif %}
+          </th>
+          {% for hour in shift %}
+            <td>{{hour}}</td>
+          {% endfor %}
+          <td>{{totals[loop.index0]}}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
 {% endblock %}
