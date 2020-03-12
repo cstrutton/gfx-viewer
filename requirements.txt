@@ -1,3 +1,4 @@
 Flask
 Bootstrap-Flask
 humanize
+uWSGI
