@@ -9,6 +9,7 @@
     {% block styles %}
     <!-- Bootstrap CSS -->
     {{ bootstrap.load_css() }}
+
     {% endblock %}
 
     <title>{% block title %}{% endblock %}</title>
@@ -18,13 +19,19 @@
     <div class="container">
       {% from 'bootstrap/nav.html' import render_nav_item %}
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <div class="navbar-nav mr-auto">
-              {{ render_nav_item('overview', 'Overview') }}
-              {{ render_nav_item('production', 'Production') }}
-              {{ render_nav_item('rabbits', 'Red Rabbit Status') }}
-              {{ render_nav_item('bypass', 'Bypass Status') }}
+        <a class="navbar-brand" href="/">GFx</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            {{ render_nav_item('production', 'Production') }}
+            {{ render_nav_item('rabbits', 'Red Rabbit Status') }}
+            {{ render_nav_item('bypass', 'Bypass Status') }}
           </div>
+        </div>
       </nav>
+
 
       <!-- Your page content -->
       {% block content %}{% endblock %}
