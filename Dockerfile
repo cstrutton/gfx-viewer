@@ -1,15 +1,4 @@
-FROM python:3.8
-LABEL maintainer="Chris Strutton <cstrutton@stackpole.ca><chris@rodandfly.ca>"
 
-ENV APP = /app
-
-RUN mkdir APP
-WORKDIR APP
-
-# Copy the uWSGI ini file to the current directory
-COPY requirements.txt .
-
-# Copy the requirements file in order to install
 FROM python:3.8
 LABEL maintainer="Chris Strutton <cstrutton@stackpole.ca><chris@rodandfly.ca>"
 
