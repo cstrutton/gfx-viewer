@@ -1,0 +1,4 @@
+Flask
+Bootstrap-Flask
+humanize
+git+git://github.com/dmroeder/pylogix#egg=pylogix
