@@ -2,6 +2,8 @@ FROM python:3.8
 
 LABEL maintainer="Chris Strutton <cstrutton@stackpole.ca><chris@rodandfly.ca>"
 
+ENV TZ America/Toronto
+
 # set work directory
 WORKDIR /usr/src/app
 
@@ -13,7 +15,9 @@ ENV PYTHONUNBUFFERED 1
 COPY ./requirements.txt /usr/src/app/requirements.txt
 
 RUN pip install -r /usr/src/app/requirements.txt
-    
+
 COPY . /usr/src/app
 
 EXPOSE 80
+
+
