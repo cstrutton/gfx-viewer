@@ -1,5 +1,5 @@
 Flask
 Bootstrap-Flask
 humanize
-uWSGI
+# uWSGI is installed in the Dockerfile as it can't be installed in windows dev enviroments
 git+git://github.com/dmroeder/pylogix#egg=pylogix
