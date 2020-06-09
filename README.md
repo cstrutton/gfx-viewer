@@ -1,29 +1,29 @@
 ### Setup for Dev: ###
 
- # clone repo
+Clone the Repo
 ```
 git clone https://cstrutton@bitbucket.org/cstrutton/gfx-viewer.git
 ```
 
- # create venv
+Create the virtual env
 ```
 cd gfx-viewer
 python3 -m venv venv
 ```
 
- # install requirements
- ```
+Install the requirements
+```
 cd src
 pip install -r reqirments.txt
 ```
 
- # start the dev server
+Start the dev server with hot reloading
 ```
 cd app
 FLASK_APP=app.py FLASK_ENV=development flask run
 ```
 
-### Update Production to latest version ###
+## Update Production image to latest version ##
 
 ```
 on the server:
