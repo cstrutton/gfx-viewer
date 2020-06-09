@@ -6,11 +6,11 @@ git clone https://cstrutton@bitbucket.org/cstrutton/gfx-viewer.git
 cd gfx-viewer
 python3 -m venv venv
 
-# install requirements
+ # install requirements
 cd src
 pip install -r reqirments.txt
 
-# start the dev server
+ # start the dev server
 cd app
 FLASK_APP=app.py FLASK_ENV=development flask run
 
