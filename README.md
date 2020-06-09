@@ -26,7 +26,6 @@ FLASK_APP=app.py FLASK_ENV=development flask run
 ## Update Production image to latest version ##
 
 ```
-on the server:
 docker-compose down
 git pull origin master
 docker-compose build
