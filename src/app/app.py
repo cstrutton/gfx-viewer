@@ -116,6 +116,35 @@ def bypass():
     return render_template('bypass.html', name='bypass', data=data)
 
 
+@app.route("/bypasslog/")
+def bypasslog():
+    log = []
+    for station in range(1, 5):
+        for entry in range(0, 25):
+            time, text = getbypasslogentry(station, entry)
+            if time and text:
+                logentry = (time, station, text)
+                log.append(logentry)
+
+    # ut.sort(key=lambda x: x.count, reverse=True)
+
+    log.sort(key=lambda x: x[0], reverse=True)
+    # for entry in log:
+    #     print(entry)
+    return render_template('bypasslog.html', name='bypass', log=log)
+
+
+def getbypasslogentry(station, entry):
+    # print('station: {}, entry: {}  - '.format(station, entry), end="")
+    text = readString(
+        'Stn0{}0_Bypass_Data.Bypass_Logging[{}].Bypass_String'.format(station, entry))
+    if not text:
+        return (None, None)
+    timestamp = get_date_time(
+        'Stn0{}0_Bypass_Data.Bypass_Logging[{}].Date_Time.Actual'.format(station, entry))
+    return (timestamp, text)
+
+
 def readString(tag):
     with PLC() as comm:
         comm.IPAddress = '10.4.42.135'
