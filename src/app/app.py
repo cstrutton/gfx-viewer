@@ -8,6 +8,9 @@ import humanize
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
 
+PLC_IP = '192.168.1.1'
+PLC_SLOT = 3
+
 
 @app.route('/')
 def production():
@@ -147,8 +150,8 @@ def getbypasslogentry(station, entry):
 
 def readString(tag):
     with PLC() as comm:
-        comm.IPAddress = '10.4.42.135'
-        comm.ProcessorSlot = 3
+        comm.IPAddress = PLC_IP
+        comm.ProcessorSlot = PLC_SLOT
         length = comm.Read('{}.LEN'.format(tag))
         if not (length.Status == 'Success'):
             return length
@@ -164,24 +167,24 @@ def readString(tag):
 
 def readBoolean(tag):
     with PLC() as comm:
-        comm.IPAddress = '10.4.42.135'
-        comm.ProcessorSlot = 3
+        comm.IPAddress = PLC_IP
+        comm.ProcessorSlot = PLC_SLOT
         ret = comm.Read(tag)
         return 'True' if ret.Value else 'False'
 
 
 def stationBypassed(station):
     with PLC() as comm:
-        comm.IPAddress = '10.4.42.135'
-        comm.ProcessorSlot = 3
+        comm.IPAddress = PLC_IP
+        comm.ProcessorSlot = PLC_SLOT
         return readBoolean('Stn0{}0_Bypass_Data.Gen[21]'.format(str(station)))
 
 
 def get_production(tag_prefix):
 
     with PLC() as comm:
-        comm.IPAddress = '10.4.42.135'
-        comm.ProcessorSlot = 3
+        comm.IPAddress = PLC_IP
+        comm.ProcessorSlot = PLC_SLOT
 
         hourly = []
         totals = []
@@ -213,8 +216,8 @@ def get_production(tag_prefix):
 def get_date_time(tag_prefix):
     """ Returns a datetime object from a collection of tags """
     with PLC() as comm:
-        comm.IPAddress = '10.4.42.135'
-        comm.ProcessorSlot = 3
+        comm.IPAddress = PLC_IP
+        comm.ProcessorSlot = PLC_SLOT
 
         tag_list = [
             tag_prefix + '.Year',
@@ -241,8 +244,8 @@ def test_response(resp):
 def get_rabbit_bypass(prefix):
     """ Gets a red rabbit's bypass status. Return 0, 1 and datetime, or -1)"""
     with PLC() as comm:
-        comm.IPAddress = '10.4.42.135'
-        comm.ProcessorSlot = 3
+        comm.IPAddress = PLC_IP
+        comm.ProcessorSlot = PLC_SLOT
         res = comm.Read(prefix + '.Bypassed')
         if res.Status == 'Success':
             if res.Value:
