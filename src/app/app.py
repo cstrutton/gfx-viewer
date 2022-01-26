@@ -1,4 +1,4 @@
-from flask_bootstrap import Bootstrap
+from flask_bootstrap import Bootstrap4
 from flask import Flask, render_template
 from pylogix import PLC
 from datetime import datetime
@@ -6,7 +6,7 @@ import humanize
 # import pprint
 
 app = Flask(__name__)
-bootstrap = Bootstrap(app)
+bootstrap = Bootstrap4(app)
 
 PLC_IP = '192.168.1.1'
 PLC_SLOT = 3
