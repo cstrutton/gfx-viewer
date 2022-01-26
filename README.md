@@ -12,9 +12,9 @@ pip3 install -r src/requirements.txt
 Install the service:
 ```
 sudo cp service_files/viewer.service /etc/systemd/system/viewer.service
-sudo systemd enable viewer.service
-sudo systemd daemon-reload
-sudo systemd start viewer.service
+sudo systemctl enable viewer.service
+sudo systemctl daemon-reload
+sudo systemctl start viewer.service
 ```
 
 Update:
@@ -23,9 +23,9 @@ cd /opt/gfx-viewer
 sudo git pull
 pip3 install -r src/requirements.txt
 sudo cp service_files/viewer.service /etc/systemd/system/viewer.service
-sudo systemd enable viewer.service
-sudo systemd daemon-reload
-sudo systemd restart viewer.service
+sudo systemctl enable viewer.service
+sudo systemctl daemon-reload
+sudo systemctl restart viewer.service
 ```
 
 View logs:

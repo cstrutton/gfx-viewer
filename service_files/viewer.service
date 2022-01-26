@@ -4,8 +4,8 @@ Description=GFx Viewer: View key data from the GFx Gauge PLC
 
 [Service]
 # Command to execute when the service is started
-WorkingDirectory= /opt/gfx_viewer/src
-ExecStart=python3 uwsgi -i /opt/gfx_viewer/src/uwsgi.ini
+WorkingDirectory= /opt/gfx-viewer/src
+ExecStart=python3 uwsgi -i /opt/gfx-viewer/src/uwsgi.ini
 Restart=always
 RestartSec=30s
 
